@@ -13,7 +13,7 @@ class CityDAL:
         self.__session = session
 
     async def truncate_table(self):
-        await self.__session.execute(text('TRUNCATE TABLE cities CASCADE;'))
+        await self.__session.execute(text('TRUNCATE TABLE cities RESTART IDENTITY CASCADE;'))
 
     async def add_city(self, city: City) -> CityDB:
         new_city = CityDB(

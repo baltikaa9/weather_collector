@@ -10,7 +10,7 @@ async def main():
 
     if 'init' in options:
         await init_cities()
-        print(f'Cities are loaded in {CITIES_FILE}')
+        # print(f'Cities are loaded in {CITIES_FILE}')
     elif 'collect' in options:
         await fetch_weather()
 

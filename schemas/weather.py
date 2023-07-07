@@ -3,6 +3,8 @@ from enum import Enum
 
 from pydantic import BaseModel, Field
 
+from schemas.base import BaseSchema
+
 
 class WeatherType(str, Enum):
     THUNDERSTORM = 'Гроза'
@@ -26,7 +28,7 @@ class WeatherWind(BaseModel):
 
 
 @dataclass
-class Weather:
+class Weather(BaseSchema):
     city_id: int
     type: WeatherType
     main: WeatherMain

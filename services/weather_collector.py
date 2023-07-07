@@ -7,13 +7,14 @@ from database.dals import CityDAL, WeatherDAL
 from database.session import async_session
 from exceptions import ApiServiceError
 from schemas.weather import Weather, WeatherType, WeatherMain, WeatherWind
+from services.base import BaseCollector
 
 
-class WeatherCollector:
+class WeatherCollector(BaseCollector):
     def __init__(self):
-        self.__weathers: list[Weather] = []
+        super().__init__()
 
-    async def fetch_weather(self) -> list[Weather] | None:
+    async def fetch(self) -> list[Weather]:
         cities = await self._get_cities_from_db()
         for city in cities:
             # TODO: вынести url-ы отдельно
@@ -30,17 +31,25 @@ class WeatherCollector:
             weather_wind = parser.parse_weather_wind()
             cloudiness = parser.parse_cloudiness()
 
-            self.__weathers.append(Weather(city.id, weather_type, weather_main, weather_wind, cloudiness))
+            weather = {
+                'city_id': city.id,
+                'type': weather_type,
+                'main': weather_main,
+                'wind': weather_wind,
+                'cloudiness': cloudiness
+            }
 
-            print(f'[INFO] Info collected for {len(self.__weathers)} city.')
+            self.storage.append(Weather.model_validate(weather))
+
+            print(f'[INFO] Info collected for {len(self.storage)} city.')
             time.sleep(0.1)
-        return self.__weathers
+        return self.storage
 
-    async def save_weathers_in_db(self):
+    async def save_to_db(self) -> None:
         async with async_session() as session:
             weather_dal = WeatherDAL(session)
 
-            for weather in self.__weathers:
+            for weather in self.storage:
                 await weather_dal.add_weather(weather)
 
     @staticmethod
@@ -101,4 +110,4 @@ class WeatherParser:
 if __name__ == '__main__':
     collector = WeatherCollector()
 
-    print(collector.fetch_weather())
+    print(collector.fetch())

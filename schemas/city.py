@@ -1,7 +1,7 @@
-from pydantic import BaseModel
+from schemas.base import BaseSchema
 
 
-class City(BaseModel):
+class City(BaseSchema):
     id: int
     name: str
     latitude: float
