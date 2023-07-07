@@ -3,8 +3,6 @@ from enum import Enum
 
 from pydantic import BaseModel, Field
 
-from schemas.coordinates import Coordinates
-
 
 class WeatherType(str, Enum):
     THUNDERSTORM = 'Гроза'

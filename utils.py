@@ -6,7 +6,6 @@ from services.weather_collector import WeatherCollector
 async def init_cities():
     city_collector = CityCollector()
     city_collector.fetch_cities(CITY_COUNT)
-    # city_collector.save_cities_to_json()
     await city_collector.save_cities_to_db()
 
 
