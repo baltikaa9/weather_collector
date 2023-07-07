@@ -1,0 +1,402 @@
+[
+    {
+        "id": 1796236,
+        "name": "Shanghai",
+        "latitude": 31.22222,
+        "longitude": 121.45806,
+        "countryCode": "CN",
+        "population": 22315474
+    },
+    {
+        "id": 1816670,
+        "name": "Beijing",
+        "latitude": 39.9075,
+        "longitude": 116.39723,
+        "countryCode": "CN",
+        "population": 18960744
+    },
+    {
+        "id": 1795565,
+        "name": "Shenzhen",
+        "latitude": 22.54554,
+        "longitude": 114.0683,
+        "countryCode": "CN",
+        "population": 17494398
+    },
+    {
+        "id": 1809858,
+        "name": "Guangzhou",
+        "latitude": 23.11667,
+        "longitude": 113.25,
+        "countryCode": "CN",
+        "population": 16096724
+    },
+    {
+        "id": 2332459,
+        "name": "Lagos",
+        "latitude": 6.45407,
+        "longitude": 3.39467,
+        "countryCode": "NG",
+        "population": 15388000
+    },
+    {
+        "id": 745044,
+        "name": "Istanbul",
+        "latitude": 41.01384,
+        "longitude": 28.94966,
+        "countryCode": "TR",
+        "population": 14804116
+    },
+    {
+        "id": 1815286,
+        "name": "Chengdu",
+        "latitude": 30.66667,
+        "longitude": 104.06667,
+        "countryCode": "CN",
+        "population": 13568357
+    },
+    {
+        "id": 1275339,
+        "name": "Mumbai",
+        "latitude": 19.07283,
+        "longitude": 72.88261,
+        "countryCode": "IN",
+        "population": 12691836
+    },
+    {
+        "id": 3530597,
+        "name": "Mexico City",
+        "latitude": 19.42847,
+        "longitude": -99.12766,
+        "countryCode": "MX",
+        "population": 12294193
+    },
+    {
+        "id": 1174872,
+        "name": "Karachi",
+        "latitude": 24.8608,
+        "longitude": 67.0104,
+        "countryCode": "PK",
+        "population": 11624219
+    },
+    {
+        "id": 1792947,
+        "name": "Tianjin",
+        "latitude": 39.14222,
+        "longitude": 117.17667,
+        "countryCode": "CN",
+        "population": 11090314
+    },
+    {
+        "id": 1273294,
+        "name": "Delhi",
+        "latitude": 28.65195,
+        "longitude": 77.23149,
+        "countryCode": "IN",
+        "population": 10927986
+    },
+    {
+        "id": 1791247,
+        "name": "Wuhan",
+        "latitude": 30.58333,
+        "longitude": 114.26667,
+        "countryCode": "CN",
+        "population": 10392693
+    },
+    {
+        "id": 524901,
+        "name": "Moscow",
+        "latitude": 55.75222,
+        "longitude": 37.61556,
+        "countryCode": "RU",
+        "population": 10381222
+    },
+    {
+        "id": 1185241,
+        "name": "Dhaka",
+        "latitude": 23.7104,
+        "longitude": 90.40744,
+        "countryCode": "BD",
+        "population": 10356500
+    },
+    {
+        "id": 1835848,
+        "name": "Seoul",
+        "latitude": 37.566,
+        "longitude": 126.9784,
+        "countryCode": "KR",
+        "population": 10349312
+    },
+    {
+        "id": 3448439,
+        "name": "São Paulo",
+        "latitude": -23.5475,
+        "longitude": -46.63611,
+        "countryCode": "BR",
+        "population": 10021295
+    },
+    {
+        "id": 1812545,
+        "name": "Dongguan",
+        "latitude": 23.01797,
+        "longitude": 113.74866,
+        "countryCode": "CN",
+        "population": 9644871
+    },
+    {
+        "id": 360630,
+        "name": "Cairo",
+        "latitude": 30.06263,
+        "longitude": 31.24967,
+        "countryCode": "EG",
+        "population": 9606916
+    },
+    {
+        "id": 1790630,
+        "name": "Xi'an",
+        "latitude": 34.25833,
+        "longitude": 108.92861,
+        "countryCode": "CN",
+        "population": 9600000
+    },
+    {
+        "id": 1799962,
+        "name": "Nanjing",
+        "latitude": 32.06167,
+        "longitude": 118.77778,
+        "countryCode": "CN",
+        "population": 9314685
+    },
+    {
+        "id": 1808926,
+        "name": "Hangzhou",
+        "latitude": 30.29365,
+        "longitude": 120.16142,
+        "countryCode": "CN",
+        "population": 9236032
+    },
+    {
+        "id": 1811103,
+        "name": "Foshan",
+        "latitude": 23.02677,
+        "longitude": 113.13148,
+        "countryCode": "CN",
+        "population": 9042509
+    },
+    {
+        "id": 1566083,
+        "name": "Ho Chi Minh City",
+        "latitude": 10.82302,
+        "longitude": 106.62965,
+        "countryCode": "VN",
+        "population": 8993082
+    },
+    {
+        "id": 2643743,
+        "name": "London",
+        "latitude": 51.50853,
+        "longitude": -0.12574,
+        "countryCode": "GB",
+        "population": 8961989
+    },
+    {
+        "id": 5128581,
+        "name": "New York",
+        "latitude": 40.71427,
+        "longitude": -74.00597,
+        "countryCode": "US",
+        "population": 8804190
+    },
+    {
+        "id": 1642911,
+        "name": "Big Durian",
+        "latitude": -6.21462,
+        "longitude": 106.84513,
+        "countryCode": "ID",
+        "population": 8540121
+    },
+    {
+        "id": 1277333,
+        "name": "Bengaluru",
+        "latitude": 12.97194,
+        "longitude": 77.59369,
+        "countryCode": "IN",
+        "population": 8443675
+    },
+    {
+        "id": 1850147,
+        "name": "Tokyo",
+        "latitude": 35.6895,
+        "longitude": 139.69171,
+        "countryCode": "JP",
+        "population": 8336599
+    },
+    {
+        "id": 1581130,
+        "name": "Hanoi",
+        "latitude": 21.0245,
+        "longitude": 105.84117,
+        "countryCode": "VN",
+        "population": 8053663
+    },
+    {
+        "id": 1668341,
+        "name": "Taipei",
+        "latitude": 25.04776,
+        "longitude": 121.53185,
+        "countryCode": "TW",
+        "population": 7871900
+    },
+    {
+        "id": 2314302,
+        "name": "Kinshasa",
+        "latitude": -4.32758,
+        "longitude": 15.31357,
+        "countryCode": "CD",
+        "population": 7785965
+    },
+    {
+        "id": 3936456,
+        "name": "Lima",
+        "latitude": -12.04318,
+        "longitude": -77.02824,
+        "countryCode": "PE",
+        "population": 7737002
+    },
+    {
+        "id": 3688689,
+        "name": "Bogotá",
+        "latitude": 4.60971,
+        "longitude": -74.08175,
+        "countryCode": "CO",
+        "population": 7674366
+    },
+    {
+        "id": 1819729,
+        "name": "Hong Kong",
+        "latitude": 22.27832,
+        "longitude": 114.17469,
+        "countryCode": "HK",
+        "population": 7482500
+    },
+    {
+        "id": 1814906,
+        "name": "Chongqing",
+        "latitude": 29.56026,
+        "longitude": 106.55771,
+        "countryCode": "CN",
+        "population": 7457599
+    },
+    {
+        "id": 98182,
+        "name": "Baghdad",
+        "latitude": 33.34058,
+        "longitude": 44.40088,
+        "countryCode": "IQ",
+        "population": 7216000
+    },
+    {
+        "id": 1797929,
+        "name": "Qingdao",
+        "latitude": 36.06488,
+        "longitude": 120.38042,
+        "countryCode": "CN",
+        "population": 7172451
+    },
+    {
+        "id": 112931,
+        "name": "Tehran",
+        "latitude": 35.69439,
+        "longitude": 51.42151,
+        "countryCode": "IR",
+        "population": 7153309
+    },
+    {
+        "id": 2034937,
+        "name": "Shenyang",
+        "latitude": 41.79222,
+        "longitude": 123.43278,
+        "countryCode": "CN",
+        "population": 7050000
+    },
+    {
+        "id": 1269843,
+        "name": "Hyderabad",
+        "latitude": 17.38405,
+        "longitude": 78.45636,
+        "countryCode": "IN",
+        "population": 6809970
+    },
+    {
+        "id": 1886760,
+        "name": "Suzhou",
+        "latitude": 31.30408,
+        "longitude": 120.59538,
+        "countryCode": "CN",
+        "population": 6715559
+    },
+    {
+        "id": 1279233,
+        "name": "Ahmedabad",
+        "latitude": 23.02579,
+        "longitude": 72.58727,
+        "countryCode": "IN",
+        "population": 6357693
+    },
+    {
+        "id": 2293538,
+        "name": "Abidjan",
+        "latitude": 5.35444,
+        "longitude": -4.00167,
+        "countryCode": "CI",
+        "population": 6321017
+    },
+    {
+        "id": 1172451,
+        "name": "Lahore",
+        "latitude": 31.558,
+        "longitude": 74.35071,
+        "countryCode": "PK",
+        "population": 6310888
+    },
+    {
+        "id": 3451190,
+        "name": "Rio de Janeiro",
+        "latitude": -22.90642,
+        "longitude": -43.18223,
+        "countryCode": "BR",
+        "population": 6023699
+    },
+    {
+        "id": 1880252,
+        "name": "Singapore",
+        "latitude": 1.28967,
+        "longitude": 103.85007,
+        "countryCode": "SG",
+        "population": 5638700
+    },
+    {
+        "id": 993800,
+        "name": "Johannesburg",
+        "latitude": -26.20227,
+        "longitude": 28.04363,
+        "countryCode": "ZA",
+        "population": 5635127
+    },
+    {
+        "id": 498817,
+        "name": "Saint Petersburg",
+        "latitude": 59.93863,
+        "longitude": 30.31413,
+        "countryCode": "RU",
+        "population": 5351935
+    },
+    {
+        "id": 361058,
+        "name": "Alexandria",
+        "latitude": 31.20176,
+        "longitude": 29.91582,
+        "countryCode": "EG",
+        "population": 5263542
+    }
+]
