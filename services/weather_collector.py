@@ -6,6 +6,7 @@ from config import OPENWEATHER_API_KEY
 from database.dals import CityDAL, WeatherDAL
 from database.session import async_session
 from exceptions import ApiServiceError
+from schemas.base import BaseSchema
 from schemas.weather import Weather, WeatherType, WeatherMain, WeatherWind
 from services.base import BaseCollector
 
@@ -14,7 +15,7 @@ class WeatherCollector(BaseCollector):
     def __init__(self):
         super().__init__()
 
-    async def fetch(self) -> list[Weather]:
+    async def fetch(self) -> list[BaseSchema]:
         cities = await self._get_cities_from_db()
         for city in cities:
             # TODO: вынести url-ы отдельно
