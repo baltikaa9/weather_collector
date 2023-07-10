@@ -1,7 +1,5 @@
 import asyncio
-import time
 
-import requests
 import aiohttp
 
 from config import OPENWEATHER_API_KEY
