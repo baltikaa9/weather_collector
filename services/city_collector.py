@@ -46,7 +46,6 @@ class CityCollector(BaseCollector):
 
         print('[INFO] Save cities to db successful.')
 
-
     def save_to_json(self) -> None:
         cities_json = [json.loads(city.model_dump_json()) for city in self.storage]
         with open(CITIES_FILE, 'w', encoding='utf-8') as file:
