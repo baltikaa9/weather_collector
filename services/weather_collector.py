@@ -31,7 +31,6 @@ class WeatherCollector(BaseCollector):
             self.storage.append(weather)
 
             print(f'[INFO] Info collected for {len(self.storage)} city.')
-            time.sleep(0.1)
         return self.storage
 
     async def save_to_db(self) -> None:
