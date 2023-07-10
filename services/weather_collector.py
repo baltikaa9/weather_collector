@@ -1,6 +1,6 @@
 import asyncio
 
-import aiohttp
+from aiohttp import ClientSession
 
 from config import OPENWEATHER_API_KEY
 from database.dals import CityDAL, WeatherDAL
@@ -20,7 +20,7 @@ class WeatherCollector(BaseCollector):
     async def fetch(self) -> list[BaseSchema]:
         """Get all cities from DB and fetch weather for each"""
         cities = await self._get_cities_from_db()
-        async with aiohttp.ClientSession() as session:
+        async with ClientSession() as session:
             for city in cities:
                 task = asyncio.create_task(self._fetch_weather_in_city(session, city))
 
@@ -30,7 +30,7 @@ class WeatherCollector(BaseCollector):
             print(f'[INFO] Weather info collected.')
         return self.storage
 
-    async def _fetch_weather_in_city(self, session, city: CityDB):
+    async def _fetch_weather_in_city(self, session: ClientSession, city: CityDB):
         url = f'https://api.openweathermap.org/data/2.5/weather?lat={city.latitude}&lon={city.longitude}&units=metric' \
               f'&appid={OPENWEATHER_API_KEY}'
 
@@ -49,7 +49,8 @@ class WeatherCollector(BaseCollector):
                 await weather_dal.add_weather(weather)
         print('[INFO] Save weathers to db successful.')
 
-    def _parse_weather(self, response_json: dict, city: CityDB) -> Weather:
+    @staticmethod
+    def _parse_weather(response_json: dict, city: CityDB) -> Weather:
         parser = WeatherParser(response_json)
 
         weather_type = parser.parse_weather_type()
