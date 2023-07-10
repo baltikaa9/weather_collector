@@ -17,7 +17,7 @@ from services.base import BaseCollector
 class WeatherCollector(BaseCollector):
     def __init__(self):
         super().__init__()
-        self.tasks = []
+        self.tasks_for_asyncio_gather = []
 
     async def fetch(self) -> list[BaseSchema]:
         """Get all cities from DB and fetch weather for each"""
@@ -26,22 +26,21 @@ class WeatherCollector(BaseCollector):
             for city in cities:
                 task = asyncio.create_task(self._fetch_weather_in_city(session, city))
 
-                self.tasks.append(task)
+                self.tasks_for_asyncio_gather.append(task)
 
-                # print(f'[INFO] Info collected for {len(self.storage)} city.')
-            await asyncio.gather(*self.tasks)
+            await asyncio.gather(*self.tasks_for_asyncio_gather)
+            print(f'[INFO] Weather info collected.')
         return self.storage
 
     async def _fetch_weather_in_city(self, session, city: CityDB):
         url = f'https://api.openweathermap.org/data/2.5/weather?lat={city.latitude}&lon={city.longitude}&units=metric' \
               f'&appid={OPENWEATHER_API_KEY}'
+
         response = await session.get(url)
         response_json = await response.json()
 
         weather = self._parse_weather(response_json, city)
         self.storage.append(weather)
-
-
 
     async def save_to_db(self) -> None:
         """Write list of weather forecasts for each of cities to the DB"""
@@ -80,7 +79,6 @@ class WeatherCollector(BaseCollector):
 class WeatherParser:
     def __init__(self, response_json: dict):
         self.response = response_json
-        c=1
 
     def parse_weather_type(self) -> WeatherType:
         try:
