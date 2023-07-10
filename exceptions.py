@@ -1,2 +1,2 @@
-class ApiServiceError:
+class ApiServiceError(Exception):
     ...

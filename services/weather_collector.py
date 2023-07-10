@@ -4,6 +4,7 @@ import requests
 
 from config import OPENWEATHER_API_KEY
 from database.dals import CityDAL, WeatherDAL
+from database.models import CityDB
 from database.session import async_session
 from exceptions import ApiServiceError
 from schemas.base import BaseSchema
@@ -16,45 +17,50 @@ class WeatherCollector(BaseCollector):
         super().__init__()
 
     async def fetch(self) -> list[BaseSchema]:
+        """Get all cities from DB and fetch weather for each"""
         cities = await self._get_cities_from_db()
         for city in cities:
-            # TODO: вынести url-ы отдельно
             url = f'https://api.openweathermap.org/data/2.5/weather?lat={city.latitude}&lon={city.longitude}&units=metric' \
                   f'&appid={OPENWEATHER_API_KEY}'
 
             response = requests.get(url)
             response_json = response.json()
 
-            parser = WeatherParser(response_json)
+            weather = self._parse_weather(response_json, city)
 
-            weather_type = parser.parse_weather_type()
-            weather_main = parser.parse_weather_main()
-            weather_wind = parser.parse_weather_wind()
-            cloudiness = parser.parse_cloudiness()
-
-            weather = {
-                'city_id': city.id,
-                'type': weather_type,
-                'main': weather_main,
-                'wind': weather_wind,
-                'cloudiness': cloudiness
-            }
-
-            self.storage.append(Weather.model_validate(weather))
+            self.storage.append(weather)
 
             print(f'[INFO] Info collected for {len(self.storage)} city.')
             time.sleep(0.1)
         return self.storage
 
     async def save_to_db(self) -> None:
+        """Write list of weather forecasts for each of cities to the DB"""
         async with async_session() as session:
             weather_dal = WeatherDAL(session)
 
             for weather in self.storage:
                 await weather_dal.add_weather(weather)
 
+    def _parse_weather(self, response_json: dict, city: CityDB) -> Weather:
+        parser = WeatherParser(response_json)
+
+        weather_type = parser.parse_weather_type()
+        weather_main = parser.parse_weather_main()
+        weather_wind = parser.parse_weather_wind()
+        cloudiness = parser.parse_cloudiness()
+
+        weather = {
+            'city_id': city.id,
+            'type': weather_type,
+            'main': weather_main,
+            'wind': weather_wind,
+            'cloudiness': cloudiness
+        }
+        return Weather.model_validate(weather)
+
     @staticmethod
-    async def _get_cities_from_db():
+    async def _get_cities_from_db() -> list[CityDB]:
         async with async_session() as session:
             city_dal = CityDAL(session)
             cities = await city_dal.get_all_cities()
