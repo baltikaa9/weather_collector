@@ -26,10 +26,11 @@ class CityCollector(BaseCollector):
             cities = response.json()['edges']
             for city in cities:
                 self.storage.append(City.model_validate(city['node']))
-
-            return self.storage
         except KeyError:
             raise ApiServiceError
+        else:
+            print('[INFO] Fetch cities successful.')
+            return self.storage
 
     async def save_to_db(self) -> None:
         """Write the list of cities to the DB"""
@@ -42,6 +43,9 @@ class CityCollector(BaseCollector):
                 await city_dal.add_city(city)
 
             await city_dal.save_datetime()
+
+        print('[INFO] Save cities to db successful.')
+
 
     def save_to_json(self) -> None:
         cities_json = [json.loads(city.model_dump_json()) for city in self.storage]

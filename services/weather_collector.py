@@ -41,6 +41,7 @@ class WeatherCollector(BaseCollector):
 
             for weather in self.storage:
                 await weather_dal.add_weather(weather)
+        print('[INFO] Save weathers to db successful.')
 
     def _parse_weather(self, response_json: dict, city: CityDB) -> Weather:
         parser = WeatherParser(response_json)
