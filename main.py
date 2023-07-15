@@ -1,6 +1,5 @@
 import asyncio
 import sys
-import time
 
 from utils import init_cities, fetch_weather
 from config import SCHEDULE_TIME
