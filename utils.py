@@ -20,7 +20,7 @@ async def init_cities():
 
 async def fetch_weather():
     weather_collector = WeatherCollector()
-    weather = await weather_collector.fetch()
+    await weather_collector.fetch()
     for _ in range(5):
         try:
             await weather_collector.save_to_db()

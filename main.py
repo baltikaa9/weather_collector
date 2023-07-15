@@ -1,7 +1,9 @@
 import asyncio
 import sys
+import time
 
 from utils import init_cities, fetch_weather
+from config import SCHEDULE_TIME
 
 
 async def main():
@@ -10,7 +12,9 @@ async def main():
     if 'init' in options:
         await init_cities()
     elif 'collect' in options:
-        await fetch_weather()
+        while True:
+            await fetch_weather()
+            await asyncio.sleep(SCHEDULE_TIME)
 
 
 if __name__ == '__main__':

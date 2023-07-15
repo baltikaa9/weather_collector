@@ -1,4 +1,5 @@
 import asyncio
+import datetime
 
 from aiohttp import ClientSession
 
@@ -27,7 +28,7 @@ class WeatherCollector(BaseCollector):
                 self.tasks_for_asyncio_gather.append(task)
 
             await asyncio.gather(*self.tasks_for_asyncio_gather)
-            print(f'[INFO] Weather info collected.')
+        print(f'[INFO] Weather info collected at {datetime.datetime.now()}.')
         return self.storage
 
     async def _fetch_weather_in_city(self, session: ClientSession, city: CityDB):

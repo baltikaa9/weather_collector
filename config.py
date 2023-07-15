@@ -16,7 +16,7 @@ DB_URL = os.getenv('DB_URL')
 
 DB_ECHO = False
 
+SCHEDULE_TIME = 3600  # in secs
+
 if __name__ == '__main__':
     print(CITIES_FILE)
-
-
