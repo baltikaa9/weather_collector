@@ -7,7 +7,7 @@ from schemas.base import BaseSchema
 from schemas.city import City
 from config import OXILOR_API_KEY, CITIES_FILE
 from database.session import async_session
-from services.base import BaseCollector
+from services.collector.base import BaseCollector
 
 
 class CityCollector(BaseCollector):

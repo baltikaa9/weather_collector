@@ -3,8 +3,8 @@ import time
 from sqlalchemy.exc import ProgrammingError
 
 from config import CITY_COUNT
-from services.city_collector import CityCollector
-from services.weather_collector import WeatherCollector
+from services.collector.city_collector import CityCollector
+from services.collector.weather_collector import WeatherCollector
 
 
 async def init_cities():

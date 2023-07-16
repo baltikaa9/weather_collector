@@ -10,7 +10,7 @@ from database.session import async_session
 from exceptions import ApiServiceError
 from schemas.base import BaseSchema
 from schemas.weather import Weather, WeatherType, WeatherMain, WeatherWind
-from services.base import BaseCollector
+from services.collector.base import BaseCollector
 
 
 class WeatherCollector(BaseCollector):

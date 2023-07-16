@@ -36,7 +36,7 @@ class CityDAL:
         return created_at
 
     async def get_city_by_coords(self, latitude: float, longitude: float) -> CityDB:
-        query = select(CityDB).where((City.latitude == latitude) & (City.longitude == longitude))
+        query = select(CityDB).where((CityDB.latitude == latitude) & (CityDB.longitude == longitude))
         city = await self.__session.execute(query)
         city = city.fetchone()
         if city:
@@ -54,7 +54,7 @@ class WeatherDAL:
     def __init__(self, session):
         self.__session = session
 
-    async def add_weather(self, weather: Weather):
+    async def add_weather(self, weather: Weather) -> WeatherDB:
         new_weather = WeatherDB(
             city_id=weather.city_id,
             type=weather.type,
@@ -69,3 +69,10 @@ class WeatherDAL:
         self.__session.add(new_weather)
         await self.__session.commit()
         return new_weather
+
+    async def get_weather_by_city_id(self, city_id: int) -> list[WeatherDB]:
+        query = select(WeatherDB).where(WeatherDB.city_id == city_id)
+        weathers = await self.__session.execute(query)
+        weathers = weathers.all()
+        weathers = [weather[0] for weather in weathers]
+        return weathers
