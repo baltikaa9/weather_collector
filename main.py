@@ -1,5 +1,6 @@
 import asyncio
 import sys
+from datetime import datetime
 
 import flet
 
@@ -15,8 +16,9 @@ async def main():
         await init_cities()
     elif options[0] == 'collect':
         while True:
-            await fetch_weather()
-            await asyncio.sleep(SCHEDULE_TIME)
+            if datetime.now().strftime('%M') == '00':
+                await fetch_weather()
+            await asyncio.sleep(60)
     elif (options[0] == 'visual') & (len(options) == 2):
         if options[1] == '-w':
             await flet.app_async(visual, view=flet.WEB_BROWSER, port=8550)
