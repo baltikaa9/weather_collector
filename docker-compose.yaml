@@ -16,6 +16,7 @@ services:
   alembic_migrations:
     container_name: "alembic_migrations"
     image: alembic_migrations
+    command: ./run.sh
     environment:
       ALEMBIC_DATABASE_URL: "postgresql://postgres:postgres@db/weather_collector"
     build:
@@ -25,29 +26,30 @@ services:
       - db
 
 
-  app_init:
-    container_name: "app_init"
-    image: app_init
-    environment:
-      DB_URL: "postgresql+asyncpg://postgres:postgres@db:5432/weather_collector"
-      OXILOR_API_KEY: "arRcNuwfAkEtjdesIT4_3e4mbdJ249"
-    build:
-      context: .
-      dockerfile: DockerfileInit
-    depends_on:
-      - alembic_migrations
+#  app_init:
+#    container_name: "app_init"
+#    image: app_init
+#    environment:
+#      DB_URL: "postgresql+asyncpg://postgres:postgres@db:5432/weather_collector"
+#      OXILOR_API_KEY: "arRcNuwfAkEtjdesIT4_3e4mbdJ249"
+#    build:
+#      context: .
+#      dockerfile: DockerfileInit
+#    depends_on:
+#      - alembic_migrations
 
-  app_collect:
-    container_name: "app_collect"
-    image: app_collect
-    environment:
-      DB_URL: "postgresql+asyncpg://postgres:postgres@db:5432/weather_collector"
-      OPENWEATHER_API_KEY: "b9b9fe45509f0497d07232d844b22aeb"
-    build:
-      context: .
-      dockerfile: DockerfileCollect
-    depends_on:
-      - app_init
+#  app_collect:
+#    container_name: "app_collect"
+#    image: app_collect
+#    environment:
+#      DB_URL: "postgresql+asyncpg://postgres:postgres@db:5432/weather_collector"
+#      OPENWEATHER_API_KEY: "b9b9fe45509f0497d07232d844b22aeb"
+#    build:
+#      context: .
+#      dockerfile: DockerfileCollect
+#    depends_on:
+##      - app_init
+#      - alembic_migrations
 
   app_visual:
     container_name: "app_visual"
@@ -60,9 +62,7 @@ services:
     ports:
       - "8550:8550"
     depends_on:
-      - app_collect
+#      - app_collect
+      - alembic_migrations
 volumes:
   db-data:
-  grafana-data:
-  grafana-config:
-  prometheus-data:

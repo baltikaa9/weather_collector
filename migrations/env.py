@@ -27,7 +27,7 @@ target_metadata = Base.metadata
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
 
-url = os.getenv('ALEMBIC_DATABASE_URL', config.get_main_option("sqlalchemy.url"))
+url = os.getenv('ALEMBIC_DATABASE_URL', config.get_main_option('sqlalchemy.url'))
 
 
 def run_migrations_offline() -> None:
@@ -61,6 +61,9 @@ def run_migrations_online() -> None:
     and associate a connection with the context.
 
     """
+    config_section = config.get_section(config.config_ini_section)
+    config_section["sqlalchemy.url"] = url
+
     connectable = engine_from_config(
         config.get_section(config.config_ini_section, {}),
         prefix="sqlalchemy.",
