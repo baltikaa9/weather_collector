@@ -7,7 +7,7 @@ from schemas.base import BaseSchema
 from schemas.city import City
 from config import OXILOR_API_KEY, CITIES_FILE
 from database.session import async_session
-from services.base import BaseCollector
+from services.collector.base import BaseCollector
 
 
 class CityCollector(BaseCollector):
@@ -25,7 +25,7 @@ class CityCollector(BaseCollector):
         try:
             cities = response.json()['edges']
             for city in cities:
-                self.storage.append(City.model_validate(city['node']))
+                self.storage.append(City(**city['node']))
         except KeyError:
             raise ApiServiceError
         else:

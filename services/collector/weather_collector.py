@@ -10,7 +10,7 @@ from database.session import async_session
 from exceptions import ApiServiceError
 from schemas.base import BaseSchema
 from schemas.weather import Weather, WeatherType, WeatherMain, WeatherWind
-from services.base import BaseCollector
+from services.collector.base import BaseCollector
 
 
 class WeatherCollector(BaseCollector):
@@ -66,7 +66,7 @@ class WeatherCollector(BaseCollector):
             'wind': weather_wind,
             'cloudiness': cloudiness
         }
-        return Weather.model_validate(weather)
+        return Weather(**weather)
 
     @staticmethod
     async def _get_cities_from_db() -> list[CityDB]:
@@ -103,14 +103,14 @@ class WeatherParser:
 
     def parse_weather_main(self) -> WeatherMain:
         try:
-            weather_main = WeatherMain.model_validate(self.response['main'])
+            weather_main = WeatherMain(**self.response['main'])
             return weather_main
         except KeyError:
             raise ApiServiceError
 
     def parse_weather_wind(self) -> WeatherWind:
         try:
-            weather_wind = WeatherWind.model_validate(self.response['wind'])
+            weather_wind = WeatherWind(**self.response['wind'])
             return weather_wind
         except KeyError:
             raise ApiServiceError

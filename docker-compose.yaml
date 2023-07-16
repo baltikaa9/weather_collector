@@ -10,6 +10,8 @@ services:
       - POSTGRES_DB=weather_collector
     ports:
       - "5433:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
 
   alembic_migrations:
     container_name: "alembic_migrations"
@@ -46,3 +48,21 @@ services:
       dockerfile: DockerfileCollect
     depends_on:
       - app_init
+
+  app_visual:
+    container_name: "app_visual"
+    image: app_visual
+    environment:
+      DB_URL: "postgresql+asyncpg://postgres:postgres@db:5432/weather_collector"
+    build:
+      context: .
+      dockerfile: DockerfileVisual
+    ports:
+      - "8550:8550"
+    depends_on:
+      - app_collect
+volumes:
+  db-data:
+  grafana-data:
+  grafana-config:
+  prometheus-data:

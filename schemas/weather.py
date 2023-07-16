@@ -27,7 +27,6 @@ class WeatherWind(BaseModel):
     deg: int
 
 
-@dataclass
 class Weather(BaseSchema):
     city_id: int
     type: WeatherType
