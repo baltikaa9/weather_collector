@@ -25,7 +25,7 @@ class CityCollector(BaseCollector):
         try:
             cities = response.json()['edges']
             for city in cities:
-                self.storage.append(City.model_validate(city['node']))
+                self.storage.append(City(**city['node']))
         except KeyError:
             raise ApiServiceError
         else:

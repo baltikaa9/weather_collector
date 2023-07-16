@@ -17,8 +17,9 @@ async def main():
         while True:
             await fetch_weather()
             await asyncio.sleep(SCHEDULE_TIME)
-    elif (options[0] == 'visual') & (options[1] == '-w'):
-        await flet.app_async(visual, view=flet.WEB_BROWSER, port=8550)
+    elif (options[0] == 'visual') & (len(options) == 2):
+        if options[1] == '-w':
+            await flet.app_async(visual, view=flet.WEB_BROWSER, port=8550)
     elif options[0] == 'visual':
         await flet.app_async(visual)
 

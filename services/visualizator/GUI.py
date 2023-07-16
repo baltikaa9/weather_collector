@@ -20,7 +20,7 @@ async def main(page: ft.Page):
             await page.remove_async(flet_chart)
         city_name = city_list.value
         weathers = await get_weathers(city_dict[city_name])
-        chart.draw(weathers.keys(), weathers.values(), color='white', marker='o')
+        chart.draw(weathers.keys(), weathers.values(), city_name, color='white', marker='o')
         await page.add_async(flet_chart)
 
     city_list = ft.Dropdown(label='City',
