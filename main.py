@@ -11,13 +11,15 @@ from services.visualizator.GUI import main as visual
 async def main():
     options = sys.argv[1:]
 
-    if 'init' in options:
+    if options[0] == 'init':
         await init_cities()
-    elif 'collect' in options:
+    elif options[0] == 'collect':
         while True:
             await fetch_weather()
             await asyncio.sleep(SCHEDULE_TIME)
-    elif 'visual' in options:
+    elif (options[0] == 'visual') & (options[1] == '-w'):
+        await flet.app_async(visual, view=flet.WEB_BROWSER, port=8550)
+    elif options[0] == 'visual':
         await flet.app_async(visual)
 
 
