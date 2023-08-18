@@ -5,5 +5,4 @@ WORKDIR .
 RUN python3 -m pip install --user --upgrade pip && \
     python3 -m pip install -r requirements.txt
 
-#EXPOSE 8550
 CMD ["python", "main.py", "visual", "-w"]

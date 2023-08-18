@@ -11,9 +11,6 @@ from services.collector.base import BaseCollector
 
 
 class CityCollector(BaseCollector):
-    def __init__(self):
-        super().__init__()
-
     async def fetch(self, count: int = 50) -> list[BaseSchema]:
         f"""Fetch {count} cities from API"""
         url = f'https://data-api.oxilor.com/rest/regions?type=city&first={count}'

@@ -4,9 +4,8 @@ from datetime import datetime
 
 import flet
 
-from utils import init_cities, fetch_weather
-from config import SCHEDULE_TIME
 from services.visualizator.GUI import main as visual
+from utils import init_cities, fetch_weather
 
 
 async def main():
@@ -15,6 +14,7 @@ async def main():
     if options[0] == 'init':
         await init_cities()
     elif options[0] == 'collect':
+        print('[INFO] Collecting weather will start in 00 minutes.')
         while True:
             if datetime.now().strftime('%M') == '00':
                 await fetch_weather()
