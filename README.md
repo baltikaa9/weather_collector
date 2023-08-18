@@ -77,15 +77,15 @@ Visualization of collected data is available in the browser at http://localhost:
    ```
 4. Run 
 
-`python main.py init` - Fetch information about cities.
-> WARNING! <br>
-> When starting this module, all stored weather information will be lost.
+    `python main.py init` - Fetch information about cities.
+    > WARNING! <br>
+When starting this module, all stored weather information will be lost.
+        
+     `python main.py collect` - Every hour fetch weather information for each city.
     
- `python main.py collect` - Every hour fetch weather information for each city.
-
- `python main.py visual` - Visualization of collected data.
-
- `python main.py visual -w` - Visualization of collected data in [browser](http://localhost:8550).
+     `python main.py visual` - Visualization of collected data.
+    
+    `python main.py visual -w` - Visualization of collected data in [browser](http://localhost:8550).
    
 ## Database connection
 - Host: `localhost`
